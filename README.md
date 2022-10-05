@@ -30,6 +30,7 @@ To set up autologin, so that the WiiM Monitor app starts at bootup without a log
 
 sudo armbian-config.  Disable the desktop, then enable it again, but with autologin.  Save, exit and sudo reboot.  
 
+With something playing on your WiiM, you will (hopefully) see it on the Quadra's HDMI monitor.  With a keyboard and mouse attached, it's still possible to get to the Quadra's menu by pressing Alt+F1, should you need to change anything.  
 
 
 
