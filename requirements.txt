@@ -1,0 +1,4 @@
+Pillow==9.2.0
+requests==2.25.1
+upnpclient==1.0.3
+xmltodict==0.13.0
