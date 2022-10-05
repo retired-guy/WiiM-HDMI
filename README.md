@@ -1,7 +1,7 @@
 # WiiM-HDMI
-Display now playing info from WiiM streamer to HDMI display
+Display now playing info from WiiM streamer on HDMI monitor
 
-Instructions to install on the Inovato Quadra, an inexpensive Armbian box which is currently available, unlike the Raspberry Pi.
+Instructions to install on the Inovato Quadra, an inexpensive Armbian box which is currently available, unlike the Raspberry Pi:
 
 Open a terminal window.  Type:
 
