@@ -12,10 +12,10 @@ from tkinter import *
 from PIL import ImageTk,Image,ImageFont,ImageDraw
 from random import randrange
 from threading import Thread
+from description import description
 
 ####################################################################
-#### Change the ip address to that of your WiiM Mini
-dev = upnpclient.Device("http://192.168.68.112:49152/description.xml")
+dev = upnpclient.Device(description)
 ####################################################################
 
 ws = Tk()
@@ -28,7 +28,7 @@ screenheight = ws.winfo_screenheight()
 fontsize = screenheight // 20
 fontname = "Helvetica"
 
-bgcolor = "#451f0c"
+bgcolor = "#895d33"
 ON = 1
 OFF = 0
 
@@ -56,7 +56,7 @@ progress_lbl = Label(
     fg='#ffffff'
     )
 
-progress_lbl.grid(row=4,column=1,sticky="nwes")
+progress_lbl.grid(row=4,column=1,columnspan=2,sticky="news")
 
 title_lbl = Label(
     ws,
@@ -69,7 +69,20 @@ title_lbl = Label(
     fg='#ffffff'
     )
 
-title_lbl.grid(row=0,column=0,columnspan=2,sticky="ew",padx=0,pady=0)
+title_lbl.grid(row=0,column=0,columnspan=2,sticky="news",padx=0,pady=0)
+
+trackcnt_lbl = Label(
+    ws,
+    text="",
+    anchor="e",
+    font=(fontname,fontsize),
+    padx=10,
+    pady=5,
+    bg=bgcolor,
+    fg='#ffffff'
+    )
+
+trackcnt_lbl.grid(row=0,column=2,sticky="nwes")
 
 artist_lbl = Label(
     ws,
@@ -84,7 +97,7 @@ artist_lbl = Label(
     fg='#ffffff'
     )
 
-artist_lbl.grid(row=1,column=1,sticky="news")
+artist_lbl.grid(row=1,column=1,columnspan=2,sticky="news")
 
 album_lbl = Label(
     ws,
@@ -99,7 +112,7 @@ album_lbl = Label(
     fg='#ffffff'
     )
 
-album_lbl.grid(row=2,column=1,sticky="news")
+album_lbl.grid(row=2,column=1,columnspan=2,sticky="news")
 
 
 meta_lbl = Label(
@@ -113,7 +126,7 @@ meta_lbl = Label(
     fg='#ffffff'
     )
 
-meta_lbl.grid(row=3,column=1,sticky="news")
+meta_lbl.grid(row=3,column=1,columnspan=2,sticky="news")
 
 art_lbl = Label(
     ws,
@@ -143,8 +156,11 @@ def get_nowplaying():
         try:
 
             time_text=time.strftime("%a, %d %b %Y    %H:%M")
+            time_lbl.config(text=time_text)
+            
             obj = dev.AVTransport.GetInfoEx(InstanceID='0')
             transportstate = obj['CurrentTransportState']
+            curtrack = obj['Track']
             
             if transportstate != 'PLAYING':
                 if not cleared:
@@ -160,7 +176,6 @@ def get_nowplaying():
                     cleared = False
 
 
-            time_lbl.config(text=time_text)
             try:
                 duration = obj['TrackDuration'][3:]
                 reltime = obj['RelTime'][3:]
@@ -174,7 +189,14 @@ def get_nowplaying():
             data = xmltodict.parse(meta)["DIDL-Lite"]["item"]
             title = data['dc:title'][:50]
             if title != old_title:
+                try:
+                    obj = dev.AVTransport.GetMediaInfo(InstanceID='0')
+                    numtracks = obj['NrTracks']
                     
+                    trackcnt_lbl.config(text=f"{curtrack}/{numtracks}")
+                except Exception as e:
+                    print(e)
+                             
                 try:
                     artist = data['upnp:artist'][:100]
                 except:
