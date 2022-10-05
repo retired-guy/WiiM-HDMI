@@ -21,6 +21,8 @@ nano description.py
 
 edit the IP address to that of your target WiiM, then save
 
+sudo pip3 install -r requirements.txt
+
 From the menu Applications/Settings/Session and Startup, add an Application Autostart for the WiiM.  Select /home/quadra/WiiMHDMI/wiim.sh in the Command: input, and Trigger: on login.  Save.  (see screenshot file above).
 
 
