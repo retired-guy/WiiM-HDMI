@@ -7,7 +7,7 @@ Open a terminal window.  Type:
 
 sudo apt update
 
-sudp apt upgrade
+sudo apt upgrade
 
 sudo apt install python3-pip
 
