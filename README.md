@@ -35,3 +35,5 @@ With something playing on your WiiM, you will (hopefully) see it on the Quadra's
 
 
 ![photo](https://raw.githubusercontent.com/retired-guy/WiiM-HDMI/main/FAB48D2B-CDA4-4798-9941-5C933B984995.jpeg)
+
+This low cost 7" HDMI display from Amazon works well with the Quadra:  https://www.amazon.com/dp/B0B79XN86K
