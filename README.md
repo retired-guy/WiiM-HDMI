@@ -33,7 +33,7 @@ sudo armbian-config.  Disable the desktop, then enable it again, but with autolo
 With something playing on your WiiM, you will (hopefully) see it on the Quadra's HDMI monitor.  With a keyboard and mouse attached, it's still possible to get to the Quadra's menu by pressing Alt+F1, should you need to change anything.  
 
 
-
+![photo](https://raw.githubusercontent.com/retired-guy/WiiM-HDMI/main/BudPowell.png)
 ![photo](https://raw.githubusercontent.com/retired-guy/WiiM-HDMI/main/FAB48D2B-CDA4-4798-9941-5C933B984995.jpeg)
 
 This low cost 7" HDMI display from Amazon works well with the Quadra:  https://www.amazon.com/dp/B0B79XN86K
